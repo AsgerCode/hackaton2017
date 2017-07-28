@@ -1,10 +1,13 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.ai.utils.Collision;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Created by codecadet on 27/07/2017.
@@ -23,41 +26,67 @@ public class Jayz {
 
     public static Texture currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_front_idle.png"));
 
-    public static final int MOVEMENTSPEED = 1;
+    public static final int MOVEMENTSPEED = 3;
 
     public static float jayzX = 400;
     public static float jayzY = 200;
+    private static float sizeX = 37;
+    private static float sizeY = 37;
 
-    public Jayz(float jayX, float jayzY) {
+    public static Rectangle hitBox;
+    private static CollisionDetector collisionDetector;
 
-        this.jayzX = jayX;
+    public Jayz(float jayzX, float jayzY) {
+
+        this.jayzX = jayzX;
         this.jayzY = jayzY;
+
+        collisionDetector = new CollisionDetector();
+
+        hitBox = new Rectangle(jayzX, jayzY, 15, 15);
+
+        System.out.println();
     }
 
-    public static void movement(float delta, SpriteBatch spriteBatch) {
+    public static void movement(float delta, SpriteBatch spriteBatch, Jayz jayz, Rectangle toSupervise) {
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            jayzY += MOVEMENTSPEED;
-            currentFrame = (Texture) Jayz.jayzAnimationBack.getKeyFrame(delta, true);
-            spriteBatch.draw(currentFrame, Jayz.jayzX, Jayz.jayzY);
+            jayz.jayzY += MOVEMENTSPEED;
+            hitBox.setY(hitBox.getY() + MOVEMENTSPEED);
+            currentFrame = (Texture) jayz.jayzAnimationBack.getKeyFrame(delta, true);
+            spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY,sizeX,sizeY);
             currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_back_idle.png"));
         } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             jayzY -= MOVEMENTSPEED;
-            currentFrame = (Texture) Jayz.jayzAnimationFront.getKeyFrame(delta, true);
-            spriteBatch.draw(currentFrame, Jayz.jayzX, Jayz.jayzY);
+            hitBox.setY(hitBox.getY() - MOVEMENTSPEED);
+            currentFrame = (Texture) jayz.jayzAnimationFront.getKeyFrame(delta, true);
+            spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY,sizeX,sizeY);
             currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_front_idle.png"));
         } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             jayzX += MOVEMENTSPEED;
-            currentFrame = (Texture) Jayz.jayzAnimationRight.getKeyFrame(delta, true);
-            spriteBatch.draw(currentFrame, Jayz.jayzX, Jayz.jayzY);
+            hitBox.setX(hitBox.getX() + MOVEMENTSPEED);
+            currentFrame = (Texture) jayz.jayzAnimationRight.getKeyFrame(delta, true);
+            spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY,sizeX,sizeY);
             currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_right_idle.png"));
         } else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             jayzX -= MOVEMENTSPEED;
-            currentFrame = (Texture) Jayz.jayzAnimationLeft.getKeyFrame(delta, true);
-            spriteBatch.draw(currentFrame, Jayz.jayzX, Jayz.jayzY);
+            hitBox.setX(hitBox.getX() - MOVEMENTSPEED);
+            currentFrame = (Texture) jayz.jayzAnimationLeft.getKeyFrame(delta, true);
+            spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY,sizeX,sizeY);
             currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_left_idle.png"));
         } else {
-            spriteBatch.draw(currentFrame, Jayz.jayzX, Jayz.jayzY);
-            }
+            spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY,sizeX,sizeY);
+        }
+
+        collisionDetector.collisionDetector(jayz, toSupervise);
+        collisionDetector.collisionDetector(jayz,GameScreen.piano);
+        collisionDetector.collisionDetector(jayz, GameScreen.roomWallDown);
+        collisionDetector.collisionDetector(jayz, GameScreen.roomWallRight);
+        collisionDetector.collisionDetector(jayz,GameScreen.bed);
+        collisionDetector.collisionDetector(jayz,GameScreen.closet);
+        collisionDetector.collisionDetector(jayz,GameScreen.upWall);
+
+        System.out.println("Jayz X: "+jayz.hitBox.getX());
+        System.out.println("Jayz Y: "+jayz.hitBox.getY());
     }
 }
