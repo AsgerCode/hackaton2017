@@ -7,12 +7,13 @@ import com.badlogic.gdx.Game;
  */
 public class MyGame extends Game {
 
-    public GameScreen gameScreen;
+    public MainMenu gameScreen;
 
     @Override
     public void create() {
 
-        gameScreen = new GameScreen(this);
+        gameScreen = new MainMenu(this);
+       // gameScreen = new GameScreen(this);
         setScreen(gameScreen);
 
     }
