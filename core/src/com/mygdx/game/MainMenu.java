@@ -36,9 +36,7 @@ public class MainMenu implements Screen {
     }
     @Override
     public void show() {
-
         sound.play();
-
     }
 
     @Override
@@ -46,7 +44,6 @@ public class MainMenu implements Screen {
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.setProjectionMatrix(camera.combined);
-
 
         spriteBatch.begin();
         spriteBatch.draw(mainScreen,0,0);

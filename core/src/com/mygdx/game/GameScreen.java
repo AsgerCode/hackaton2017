@@ -114,7 +114,7 @@ public class GameScreen implements Screen {
         Gdx.graphics.setContinuousRendering(true);
 
         this.game = game;
-        camera = new OrthographicCamera();
+        this.camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 400);
 
         spriteBHint = new SpriteBatch();
@@ -126,7 +126,7 @@ public class GameScreen implements Screen {
 
         spriteBatch = new SpriteBatch();
 
-        TiledMap map = new TmxMapLoader().load("/Users/codecadet/personaldev/99problemsgame/core/assets/maps/level1.tmx");
+        TiledMap map = new TmxMapLoader().load("maps/level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1);
 
         stateTime = 0F;
@@ -165,7 +165,7 @@ public class GameScreen implements Screen {
 
         stateTime += Gdx.graphics.getDeltaTime();
         spriteBatch.setProjectionMatrix(camera.combined);
-       // spriteBHint.setProjectionMatrix(camera.combined);
+        //spriteBHint.setProjectionMatrix(camera.combined);
 
 
         spriteBatch.begin();
@@ -174,14 +174,11 @@ public class GameScreen implements Screen {
         spriteBatch.end();
 
         spriteBHint.begin();
-        spriteBHint.draw(hint,1040,0);
+        spriteBHint.draw(hint, 800,0);
         spriteBHint.end();
 
         timer.stage.draw();
 
-        System.out.println(jayz.isDressed);
-        System.out.println(closetX);
-        System.out.println(closetY);
     }
 
     @Override

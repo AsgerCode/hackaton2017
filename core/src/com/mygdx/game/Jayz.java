@@ -12,15 +12,15 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class Jayz {
 
-    public static final Texture[] jayzBack = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_back_rightfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_back_walking_leftfoot.png"))};
-    public static final Texture[] jayzFront = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_front_leftfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_front_rightfoot.png"))};
-    public static final Texture[] jayzRight = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_rigth_rigthfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_right_leftfoot.png"))};
-    public static final Texture[] jayzLeft = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_left_rightfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_left_leftfoot.png"))};
+    public static final Texture[] jayzBack = {new Texture(Gdx.files.internal("jayz/jayz_back_rightfoot.png")), new Texture(Gdx.files.internal("jayz/jayz_back_walking_leftfoot.png"))};
+    public static final Texture[] jayzFront = {new Texture(Gdx.files.internal("jayz/jayz_front_leftfoot.png")), new Texture(Gdx.files.internal("jayz/jayz_front_rightfoot.png"))};
+    public static final Texture[] jayzRight = {new Texture(Gdx.files.internal("jayz/jayz_rigth_rigthfoot.png")), new Texture(Gdx.files.internal("jayz/jayz_right_leftfoot.png"))};
+    public static final Texture[] jayzLeft = {new Texture(Gdx.files.internal("jayz/jayz_left_rightfoot.png")), new Texture(Gdx.files.internal("jayz/jayz_left_leftfoot.png"))};
 
-    public static final Texture[] nakedJayzBack = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_back_leftfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_back_rightfoot.png"))};
-    public static final Texture[] nakedJayzFront = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_front_leftfoot.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_front_rightfoot.png"))};
-    public static final Texture[] nakedJayzRight = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_right_leftfoot_.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_right_rightfoot_.png"))};
-    public static final Texture[] nakedJayzLeft = {new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_left_leftfoot_.png")), new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_left_rightfoot_.png"))};
+    public static final Texture[] nakedJayzBack = {new Texture(Gdx.files.internal("jayz/naked_jayz_back_leftfoot.png")), new Texture(Gdx.files.internal("jayz/naked_jayz_back_rightfoot.png"))};
+    public static final Texture[] nakedJayzFront = {new Texture(Gdx.files.internal("jayz/naked_jayz_front_leftfoot.png")), new Texture(Gdx.files.internal("jayz/naked_jayz_front_rightfoot.png"))};
+    public static final Texture[] nakedJayzRight = {new Texture(Gdx.files.internal("jayz/naked_jayz_right_leftfoot_.png")), new Texture(Gdx.files.internal("jayz/naked_jayz_right_rightfoot_.png"))};
+    public static final Texture[] nakedJayzLeft = {new Texture(Gdx.files.internal("jayz/naked_jayz_left_leftfoot_.png")), new Texture(Gdx.files.internal("jayz/naked_jayz_left_rightfoot_.png"))};
 
     public static final Animation jayzAnimationBack = new Animation(0.2F, jayzBack);
     public static final Animation jayzAnimationFront = new Animation(0.2F, jayzFront);
@@ -32,9 +32,9 @@ public class Jayz {
     public static final Animation nakedJayzAnimationRight = new Animation(0.2F, nakedJayzRight);
     public static final Animation nakedJayzAnimationLeft = new Animation(0.2F, nakedJayzLeft);
 
-    public static Texture currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_front_idkle.png"));
+    public static Texture currentFrame = new Texture(Gdx.files.internal("jayz/naked_jayz_front_idkle.png"));
 
-    public static final int MOVEMENTSPEED = 5;
+    public static final int MOVEMENTSPEED = 2;
 
     public static float jayzX = 400;
     public static float jayzY = 200;
@@ -78,28 +78,28 @@ public class Jayz {
                 currentFrame = (Texture) jayz.nakedJayzAnimationBack.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "W";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_back_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/naked_jayz_back_idle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
                 jayzY -= MOVEMENTSPEED;
                 hitBox.setY(hitBox.getY() - MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.nakedJayzAnimationFront.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "S";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_front_idkle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/naked_jayz_front_idkle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
                 jayzX += MOVEMENTSPEED;
                 hitBox.setX(hitBox.getX() + MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.nakedJayzAnimationRight.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "D";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_right_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/naked_jayz_right_idle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
                 jayzX -= MOVEMENTSPEED;
                 hitBox.setX(hitBox.getX() - MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.nakedJayzAnimationLeft.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "A";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/naked_jayz_left_idlke.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/naked_jayz_left_idlke.png"));
             } else {
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
             }
@@ -112,28 +112,28 @@ public class Jayz {
                 currentFrame = (Texture) jayz.jayzAnimationBack.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "W";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_back_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/jayz_back_idle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
                 jayzY -= MOVEMENTSPEED;
                 hitBox.setY(hitBox.getY() - MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.jayzAnimationFront.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "S";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_front_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/jayz_front_idle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
                 jayzX += MOVEMENTSPEED;
                 hitBox.setX(hitBox.getX() + MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.jayzAnimationRight.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "D";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_right_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/jayz_right_idle.png"));
             } else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
                 jayzX -= MOVEMENTSPEED;
                 hitBox.setX(hitBox.getX() - MOVEMENTSPEED);
                 currentFrame = (Texture) jayz.jayzAnimationLeft.getKeyFrame(delta, true);
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
                 keyPressed = "A";
-                currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_left_idle.png"));
+                currentFrame = new Texture(Gdx.files.internal("jayz/jayz_left_idle.png"));
             } else {
                 spriteBatch.draw(currentFrame, jayz.jayzX, jayz.jayzY, sizeX, sizeY);
             }
@@ -149,7 +149,7 @@ public class Jayz {
                 ++count1;
             }
             jayz.isDressed = true;
-            currentFrame = new Texture(Gdx.files.internal("/Users/codecadet/personaldev/99problemsgame/core/assets/jayz/jayz_back_idle.png"));
+            currentFrame = new Texture(Gdx.files.internal("jayz/jayz_back_idle.png"));
         }
 
         if (jayz.hitBox.getX() > GameScreen.rightSofa.getX() - 20
@@ -174,12 +174,9 @@ public class Jayz {
             collisionDetector.collisionDetector(jayz, GameScreen.closet);
             collisionDetector.collisionDetector(jayz, GameScreen.upWall);
             collisionDetector.collisionDetector(jayz, GameScreen.rightSofa);
-            collisionDetector.collisionDetector(jayz,GameScreen.changeScreen);
+            collisionDetector.collisionDetector(jayz, GameScreen.changeScreen);
         }
 
-        if(currentLevel == 2){
-            collisionDetector.collisionDetector(jayz,GameScreenLevel2.changeScreenToLevel3);
-        }
 
         if (!jayz.isDressed || !jayz.hasKey) {
             collisionDetector.collisionDetector(jayz, GameScreen.door);
@@ -192,8 +189,5 @@ public class Jayz {
         if (jayz.isDressed) {
 
         }
-
-        System.out.println("Jayz X: " + jayz.hitBox.getX());
-        System.out.println("Jayz Y: " + jayz.hitBox.getY());
     }
 }
